@@ -13,7 +13,7 @@ function App() {
         <ThemeContextProvider initialValue={null}>
           <LecturerContextProvider>
             <Wrapper>
-              <Navbar/>
+              {/* <Navbar/> */}
               <ScheduleRouter/>
             </Wrapper>
           </LecturerContextProvider>
