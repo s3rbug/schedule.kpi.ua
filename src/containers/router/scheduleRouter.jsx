@@ -4,8 +4,8 @@ import ScheduleContainer from "../scheduleContainer";
 import { mockdata } from "../../mock";
 import { useGroupContext } from "../../common/context/groupContext";
 import Navbar from "../../containers/navbar";
-import GroupSearch from "../../components/groupSearch/groupSearch";
-import EntitySearch from "../../components/entitySearch";
+import GroupSchedule from "../groupSchedule";
+import TeacherSchedule from "../teacherSchedule";
 
 import axios from "axios";
 
@@ -34,7 +34,7 @@ const ScheduleRouter = () => {
     <Switch>
       <Route exact path="/">
         <Navbar type="group" />
-        <ScheduleContainer data={data} />
+        <GroupSchedule />
       </Route>
       <Route exact path="/sessions">
         <Navbar />
@@ -42,7 +42,7 @@ const ScheduleRouter = () => {
       </Route>
       <Route exact path="/teachers">
         <Navbar type="teachers" />
-        <ScheduleContainer data={data} />
+        <TeacherSchedule />
       </Route>
       <Route>
         <Redirect to="/" />

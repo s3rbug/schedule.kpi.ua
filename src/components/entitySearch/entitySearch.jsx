@@ -20,7 +20,7 @@ const EntitySearch = (props) => {
   }, [])
 
   const onOptionChange = option => {
-    setLecturer(option);
+    setLecturer(option.value);
   }
 
   const customStyles = {
