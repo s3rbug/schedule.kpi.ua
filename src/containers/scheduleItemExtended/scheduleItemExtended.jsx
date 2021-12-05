@@ -1,18 +1,19 @@
-import { ScheduleItemExtendedUnit, ScheduleItemExtendedWrapper } from './scheduleItemExtended.style';
-import ScheduleItemContent from '../../components/scheduleItemContent';
+import {
+  ScheduleItemExtendedUnit,
+  ScheduleItemExtendedWrapper,
+} from "./scheduleItemExtended.style";
+import ScheduleItemContent from "../../components/scheduleItemContent";
 
-const ScheduleItemExtended = ({scheduleItemData}) => {
-  return scheduleItemData ? (
-    <ScheduleItemExtendedWrapper items={3}>
-      <ScheduleItemExtendedUnit>
-        <ScheduleItemContent scheduleItemData={scheduleItemData}/>
-      </ScheduleItemExtendedUnit>
-      <ScheduleItemExtendedUnit>
-        <ScheduleItemContent scheduleItemData={scheduleItemData}/>
-      </ScheduleItemExtendedUnit>
-      <ScheduleItemExtendedUnit>
-        <ScheduleItemContent scheduleItemData={scheduleItemData}/>
-      </ScheduleItemExtendedUnit>
+const ScheduleItemExtended = ({ lessons, currentDay }) => {
+  return lessons.length ? (
+    <ScheduleItemExtendedWrapper items={lessons.length}>
+      {lessons.map((item) => {
+        return (
+          <ScheduleItemExtendedUnit>
+            <ScheduleItemContent scheduleItemData={item} />
+          </ScheduleItemExtendedUnit>
+        );
+      })}
     </ScheduleItemExtendedWrapper>
   ) : null;
 };
