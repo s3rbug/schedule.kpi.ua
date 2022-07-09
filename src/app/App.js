@@ -8,6 +8,7 @@ import { LecturerContextProvider } from '../common/context/lecturerContext';
 import { PreloadedListsContextProvider } from '../common/context/preloadedListsContext';
 import { useCurrentDateParams } from '../common/utils/useCurrentDateParams';
 import ScrollToTop from '../containers/scrollToTop/index';
+import { ScrollRefProvider } from '../common/context/scrollRefsContext';
 
 function App() {
   const { currentWeek } = useCurrentDateParams()
@@ -17,12 +18,14 @@ function App() {
         <GroupContextProvider>
           <ThemeContextProvider initialValue={null}>
             <LecturerContextProvider>
-              <ScrollToTop>
-                <Wrapper>
-                  <Navbar />
-                  <ScheduleRouter />
-                </Wrapper>
-              </ScrollToTop>
+              <ScrollRefProvider>
+                <ScrollToTop>
+                  <Wrapper>
+                    <Navbar />
+                    <ScheduleRouter />
+                  </Wrapper>
+                </ScrollToTop>
+              </ScrollRefProvider>
             </LecturerContextProvider>
           </ThemeContextProvider>
         </GroupContextProvider>

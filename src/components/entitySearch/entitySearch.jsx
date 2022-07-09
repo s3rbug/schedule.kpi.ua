@@ -13,7 +13,13 @@ import { prepareList } from "../../common/utils/apiTransformers";
 import { routes } from "../../common/constants/routes";
 
 import { getSelectCustomStyle } from "../../common/constants/selectOptions";
+import { useCurrentDateParams } from "../../common/utils/useCurrentDateParams";
+import { useScrollRef } from "../../common/context/scrollRefsContext";
+
 import "./entitySearch.scss";
+import { useCurrentMode } from "../../common/utils/useCurrentMode";
+import { MODES } from "../../common/constants/modes";
+import { TIME_POINTS } from "../../common/constants/scheduleParams";
 
 const useQuery = () => {
   const { search } = useLocation();
@@ -29,6 +35,10 @@ const EntitySearch = () => {
   const { lecturer, setLecturer } = useLecturerContext();
   const { group, setGroup } = useGroupContext();
   const lists = usePreloadedListContext();
+
+  const {refs} = useScrollRef()
+  const {currentLesson} = useCurrentDateParams()
+  const mode = useCurrentMode();
 
   const isLecturer = location.pathname.includes(routes.LECTURER);
   const list = isLecturer ? lists.lecturers : lists.groups;
@@ -76,6 +86,9 @@ const EntitySearch = () => {
     } else {
       history.push("?groupId=" + option.value);
       localStorage.setItem("groupId", option.value)
+    }
+    if(Object.keys(refs).length === TIME_POINTS.length && mode !== MODES.BIG){ // Only for mobile
+      refs[currentLesson].current.scrollIntoView({behavior: "smooth"})
     }
   };
   const initialValue =

@@ -14,7 +14,7 @@ const Schedule = ({children}) => {
 
     return (
       <>
-        <TimeDivider>{TIME_POINTS[index]}</TimeDivider>
+        <TimeDivider index={index}>{TIME_POINTS[index]}</TimeDivider>
         {child}
       </>
     );
